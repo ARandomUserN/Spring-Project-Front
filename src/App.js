@@ -1,61 +1,51 @@
-import "./App.css";
-import { useState } from "react";
-import axios from "axios";
+import React from 'react';
+import './App.css'
+import { Route } from "react-router-dom";
+import student from "./components/Pages/student";
+import LoginForm from "./components/Pages/LoginForm";
+import studetnsGrades from './components/Pages/studentsGrades';
+import studentsComments from './components/Pages/studentsComments';
+import studentsPresence from './components/Pages/studentsPresence';
+import teacher from './components/Pages/teacher';
+import caretaker from './components/Pages/caretaker';
+
+//const createProxyMiddleware = require("http-proxy-middleware");
 
 function App() {
-  
-  const [username, setName] = useState("");
-  const [password, setEmail] = useState("");
-  
-  let next;
+  /*const Logout = () => {
+    setUser({
+      name: "",
+      surname: "",
+      id: "",
+      email: "",
+      phone: ""
+    })
+    setRedirect("/login")
+  }*/
 
-  let handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(username,password)
-    try {
-      let res = await axios({
-        method: "put",
-        url: "/login",
-        data: JSON.stringify({
-          username: username,
-          password: password
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-        }
-
-      }).then(res => {
-        console.log(res.data)
-        let next = res.data["href"]
-        console.log(next)
-        // this.next = next
-        
-      })
-      
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  return (
-    <div className="App">
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={username}
-          placeholder="Email"
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          type="text"
-          value={password}
-          placeholder="Pwd"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <button type="submit">Create</button>
-      </form>
+  return(
+    <div className='App'>
+      <Route exact path='/' component = {LoginForm} />
+      <Route exact path='/student' component = {student} />
+      <Route exact path='/student/grades' component = {studetnsGrades} />
+      <Route exact path='/student/comments' component = {studentsComments} />
+      <Route exact path='/student/presence' component = {studentsPresence} />
+      <Route exact path='/teacher' component = {teacher} />     
+      <Route exact path='/caretaker' component = {caretaker} />
     </div>
+
+
+    /*<div className="App">
+
+      {(redirect !== "/login") ?(
+        <>
+        <Router>
+        <Link to="/student"></Link>
+        </Router></>
+      ):(
+        <LoginForm Login={Login} error={error} />
+      )}
+    </div>*/
   );
 }
 
