@@ -28,13 +28,13 @@ function LoginForm(){
           if(response.data['href'].split('/')[i] === "students"){
             usersClass.getUserDataByID(response.data["href"]).then(userData => {
               sessionStorage.setItem('userID', userData.id)
+              sessionStorage.setItem('email', userData.email)
               sessionStorage.setItem('name', userData.firstName)
               sessionStorage.setItem('surname', userData.lastName)
-              sessionStorage.setItem('email', userData.email)
+              sessionStorage.setItem('phone', userData.phone)
               sessionStorage.setItem('caretaker', userData.carFirstName + " " + userData.carLastName)
               sessionStorage.setItem('class', userData.year + userData.className)
               sessionStorage.setItem('classYearID', userData.classyearId)
-              sessionStorage.setItem('phone', userData.phone)
               setRedirect("/student")
             })
 
