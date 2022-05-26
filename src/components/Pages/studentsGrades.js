@@ -20,7 +20,7 @@ export default class studentsGrades extends React.Component {
   state = {
     subjects: [], gradesList: []
   }
-
+//lelelelel
   componentDidMount() {
     axios.get('/api/students/' + sessionStorage.getItem("userID") + '/subjects')
       .then(res => {
