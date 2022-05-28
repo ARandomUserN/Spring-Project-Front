@@ -10,7 +10,7 @@ function NavBar() {
 
   async function handleClickLogout(){
 
-    await axios.get('/logout');
+    await axios.put('/logout');
 
     sessionStorage.clear();
 
