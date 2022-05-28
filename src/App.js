@@ -7,6 +7,9 @@ import studetnsGrades from './components/Pages/student/studentsGrades';
 import studentsComments from './components/Pages/student/studentsComments';
 import studentsPresence from './components/Pages/student/studentsPresence';
 import teacher from './components/Pages/teacher/teacher';
+import teacherSubjects from './components/Pages/teacher/teacherSubjects';
+
+
 import caretaker from './components/Pages/caretaker';
 
 //const createProxyMiddleware = require("http-proxy-middleware");
@@ -31,7 +34,9 @@ function App() {
       <Route exact path='/student/grades' component = {studetnsGrades} />
       <Route exact path='/student/comments' component = {studentsComments} />
       <Route exact path='/student/presence' component = {studentsPresence} />
-      <Route exact path='/teacher' component = {teacher} />     
+      <Route exact path='/teacher' component = {teacher} /> 
+      <Route exact path='/teacher/subjects' component = {teacherSubjects} /> 
+
       <Route exact path='/caretaker' component = {caretaker} />
     </div>
 

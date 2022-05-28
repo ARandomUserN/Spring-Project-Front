@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import NavBar from "./studentNavBar";
+import NavBar from './teacherNavBar'
 
 export default class studentsGrades extends React.Component {
   state = {
@@ -8,12 +8,14 @@ export default class studentsGrades extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/api/students/' + sessionStorage.getItem("userID") + '/subjects')
+    axios.get('/api/teachers/' + sessionStorage.getItem("userID") + '/subjects')
       .then(res => {
         const subjects = res.data;
 
+        console.log(res)
+
         this.setState({ subjects: subjects });
-        axios.get('/api/students/api/students/' + sessionStorage.getItem("userID") + '/marks')
+        /*axios.get('/api/students/' + sessionStorage.getItem("userID") + '/marks')
         .then(res => {
           const marks = res.data;
           var grades = []
@@ -23,7 +25,7 @@ export default class studentsGrades extends React.Component {
           });
 
           this.setState({ gradesList: grades });
-        })
+        })*/
       })
   }
 
