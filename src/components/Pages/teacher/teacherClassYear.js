@@ -38,9 +38,9 @@ export default class teacherClassYear extends React.Component {
           <><li key={student.id}><strong>Uczeń: </strong>{student.student.firstName} {student.student.lastName}</li>
           <ul>
           {student.mark.map(mark1 => 
-            <li key={mark1.id} onClick={() => console.log(student.student.id)}><strong>{mark1.type} </strong>{mark1.value} ({mark1.weight})</li>
+            <li key={mark1.id}><strong>{mark1.type} </strong>{mark1.value} ({mark1.weight})   <u onClick={() => console.log("wybrano EDYTUJ ocene dla studenta " + student.student.firstName + " " + student.student.lastName + "(" + student.student.id + ")" + " - " + mark1.id)}>EDYTUJ</u>   <u onClick={() => console.log("wybrano USUN ocene dla studenta " + student.student.firstName + " " + student.student.lastName + "(" + student.student.id + ")" + " - " + mark1.id)}>USUŃ</u></li>
           )}
-          <li>DODAJ OCENE :)</li>
+          <li><u onClick={() => console.log("wybrano DODAJ ocene dla studenta " + student.student.firstName + " " + student.student.lastName + "(" + student.student.id + ")")}>DODAJ OCENE :)</u></li>
           </ul></>
         )}
 
