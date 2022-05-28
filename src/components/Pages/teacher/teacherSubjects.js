@@ -8,9 +8,9 @@ function subjectToSession(subjectId, classyearId) {
   sessionStorage.setItem("classYearID", classyearId);    
 }
 
-export default class studentsGrades extends React.Component {
+export default class teacherSubjects extends React.Component {
   state = {
-    subjects: [], gradesList: []
+    subjects: []
   }
 
   componentDidMount() {
