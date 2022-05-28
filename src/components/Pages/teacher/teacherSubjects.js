@@ -1,6 +1,12 @@
-import React from 'react';
+import React from "react";
 import axios from 'axios';
 import NavBar from './teacherNavBar'
+import { NavLink } from "react-router-dom";
+
+function subjectToSession(subjectId, classyearId) {
+  sessionStorage.setItem("subjectID", subjectId);
+  sessionStorage.setItem("classYearID", classyearId);    
+}
 
 export default class studentsGrades extends React.Component {
   state = {
@@ -12,20 +18,7 @@ export default class studentsGrades extends React.Component {
       .then(res => {
         const subjects = res.data;
 
-        console.log(res)
-
         this.setState({ subjects: subjects });
-        /*axios.get('/api/students/' + sessionStorage.getItem("userID") + '/marks')
-        .then(res => {
-          const marks = res.data;
-          var grades = []
-
-          marks.forEach(mark => {
-            grades.push({id: mark.mark.id, subject: mark.subjectId, value: mark.mark.value, weight: mark.mark.weight, type: mark.mark.type})
-          });
-
-          this.setState({ gradesList: grades });
-        })*/
       })
   }
 
@@ -38,20 +31,9 @@ export default class studentsGrades extends React.Component {
       <><NavBar />
       <ul>
         {this.state.subjects.map(subject =>
-          <><li key={subject.subject.id}><b>{subject.subject.name}</b> Nauczyciel: {subject.teacher.firstName} {subject.teacher.lastName}</li><ul>
-            {this.state.gradesList.map(grade => 
-            
-            (subject.subject.id === grade.subject) ?(
-              <li key={grade.id}><b>Ocena: </b>{grade.value} <b>Za: </b>{grade.type} <b>Waga: </b>{grade.weight}</li>
-            ):(
-              <></>
-            )
-            )}
-          </ul></>
-          
+          <li key={subject.id} className="nav-item"><NavLink exact to="/teacher/class" activeClassName="active" onClick={() => {subjectToSession(subject.subject.id, subject.classyear.id)}} className="nav-links"><strong>Klasa: {subject.classyear.year}{subject.classyear.name}</strong> Przedmiot: {subject.subject.name}</NavLink></li>
         )}
-      </ul>
-          
+      </ul>     
       </>
     )
   }

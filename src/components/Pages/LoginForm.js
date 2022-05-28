@@ -41,11 +41,12 @@ function LoginForm(){
           }
           if(response.data['href'].split('/')[i] === "teachers"){
             usersClass.getUserDataByID(response.data["href"]).then(userData => {
-              sessionStorage.setItem('userID', userData.id)
+              console.log(userData)
+              sessionStorage.setItem('userID', userData.teacher.id)
               sessionStorage.setItem('email', userData.email)
-              sessionStorage.setItem('name', userData.firstName)
-              sessionStorage.setItem('surname', userData.lastName)
-              sessionStorage.setItem('phone', userData.phone)
+              sessionStorage.setItem('name', userData.teacher.firstName)
+              sessionStorage.setItem('surname', userData.teacher.lastName)
+              sessionStorage.setItem('phone', userData.teacher.phone)
               setRedirect("/teacher")
             })
           }

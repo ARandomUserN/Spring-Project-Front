@@ -13,7 +13,7 @@ export default class studentsGrades extends React.Component {
         const subjects = res.data;
 
         this.setState({ subjects: subjects });
-        axios.get('/api/students/api/students/' + sessionStorage.getItem("userID") + '/marks')
+        axios.get('/api/students/' + sessionStorage.getItem("userID") + '/marks')
         .then(res => {
           const marks = res.data;
           var grades = []
@@ -36,7 +36,7 @@ export default class studentsGrades extends React.Component {
       <><NavBar />
       <ul>
         {this.state.subjects.map(subject =>
-          <><li key={subject.subject.id}><b>{subject.subject.name}</b> Nauczyciel: {subject.teacher.firstName} {subject.teacher.lastName}</li><ul>
+          <><li key={subject.id}><b>{subject.subject.name}</b> Nauczyciel: {subject.teacher.firstName} {subject.teacher.lastName}</li><ul>
             {this.state.gradesList.map(grade => 
             
             (subject.subject.id === grade.subject) ?(
