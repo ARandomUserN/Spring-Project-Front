@@ -1,24 +1,35 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import { NavLink } from "react-router-dom";
-import "./NavBar.css";
+import "../../NavBar.css";
 
 function NavBar() {
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
+
+  async function handleClickLogout(){
+
+    await axios.get('/logout');
+
+    sessionStorage.clear();
+
+    setClick(!click);
+  }
+
   return (
     <>
       <nav className="navbar">
         <div className="nav-container">
-          <NavLink exact to="/" className="nav-logo">
+          <div className="nav-logo">
             E-dziennik
-          </NavLink>
+          </div>
 
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
               <NavLink
                 exact
-                to="/student"
+                to="/teacher"
                 activeClassName="active"
                 className="nav-links"
                 onClick={handleClick}
@@ -29,34 +40,24 @@ function NavBar() {
             <li className="nav-item">
               <NavLink
                 exact
-                to="/student/grades"
+                to="/teacher/subjects"
                 activeClassName="active"
                 className="nav-links"
                 onClick={handleClick}
               >
-                Oceny
+                Przedmioty
               </NavLink>
             </li>
+            
             <li className="nav-item">
               <NavLink
                 exact
-                to="/student/presence"
+                to="/"
                 activeClassName="active"
                 className="nav-links"
-                onClick={handleClick}
+                onClick={handleClickLogout}
               >
-                Obecność
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                exact
-                to="/student/comments"
-                activeClassName="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
-                Uwagi
+                Wyloguj
               </NavLink>
             </li>
           </ul>

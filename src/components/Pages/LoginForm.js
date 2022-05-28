@@ -40,8 +40,14 @@ function LoginForm(){
 
           }
           if(response.data['href'].split('/')[i] === "teachers"){
-            setRedirect("/teacher");
-            break;
+            usersClass.getUserDataByID(response.data["href"]).then(userData => {
+              sessionStorage.setItem('userID', userData.id)
+              sessionStorage.setItem('email', userData.email)
+              sessionStorage.setItem('name', userData.firstName)
+              sessionStorage.setItem('surname', userData.lastName)
+              sessionStorage.setItem('phone', userData.phone)
+              setRedirect("/teacher")
+            })
           }
           if(response.data['href'].split('/')[i] === "caretakers"){
             setRedirect("/caretaker");

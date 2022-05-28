@@ -14,7 +14,7 @@ export default studentsGrades;*/
 
 import React from 'react';
 import axios from 'axios';
-import NavBar from "../studentNavBar";
+import NavBar from "./studentNavBar";
 
 export default class studentsGrades extends React.Component {
   state = {

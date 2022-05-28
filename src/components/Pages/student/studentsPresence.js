@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../studentNavBar";
+import NavBar from "./studentNavBar";
 
 function studentsPresence(){
   return (

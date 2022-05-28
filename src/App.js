@@ -1,17 +1,18 @@
 import React from 'react';
 import './App.css'
 import { Route } from "react-router-dom";
-import student from "./components/Pages/student";
+import student from "./components/Pages/student/student";
 import LoginForm from "./components/Pages/LoginForm";
-import studetnsGrades from './components/Pages/studentsGrades';
-import studentsComments from './components/Pages/studentsComments';
-import studentsPresence from './components/Pages/studentsPresence';
-import teacher from './components/Pages/teacher';
+import studetnsGrades from './components/Pages/student/studentsGrades';
+import studentsComments from './components/Pages/student/studentsComments';
+import studentsPresence from './components/Pages/student/studentsPresence';
+import teacher from './components/Pages/teacher/teacher';
 import caretaker from './components/Pages/caretaker';
 
 //const createProxyMiddleware = require("http-proxy-middleware");
 
 function App() {
+
   /*const Logout = () => {
     setUser({
       name: "",
