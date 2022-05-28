@@ -8,23 +8,26 @@ export default class studentsGrades extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/api/students/' + sessionStorage.getItem("userID") + '/subjects')
-      .then(res => {
-        const subjects = res.data;
-
-        this.setState({ subjects: subjects });
-        axios.get('/api/students/' + sessionStorage.getItem("userID") + '/marks')
+    if(sessionStorage.getItem("userID") !== null)
+    {
+      axios.get('/api/students/' + sessionStorage.getItem("userID") + '/subjects')
         .then(res => {
-          const marks = res.data;
-          var grades = []
+          const subjects = res.data;
 
-          marks.forEach(mark => {
-            grades.push({id: mark.mark.id, subject: mark.subjectId, value: mark.mark.value, weight: mark.mark.weight, type: mark.mark.type})
-          });
+          this.setState({ subjects: subjects });
+          axios.get('/api/students/' + sessionStorage.getItem("userID") + '/marks')
+          .then(res => {
+            const marks = res.data;
+            var grades = []
 
-          this.setState({ gradesList: grades });
+            marks.forEach(mark => {
+              grades.push({id: mark.mark.id, subject: mark.subjectId, value: mark.mark.value, weight: mark.mark.weight, type: mark.mark.type})
+            });
+
+            this.setState({ gradesList: grades });
+          })
         })
-      })
+    }
   }
 
   componentWillUnmount(){

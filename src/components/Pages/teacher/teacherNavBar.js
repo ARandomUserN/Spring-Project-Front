@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import { NavLink } from "react-router-dom";
 import "../../NavBar.css";
+import  { Redirect } from 'react-router-dom'
 
 function NavBar() {
   const [click, setClick] = useState(false);
@@ -10,19 +11,33 @@ function NavBar() {
 
   async function handleClickLogout(){
 
-    await axios.put('/logout');
-
     sessionStorage.clear();
+
+    await axios.put('/logout').catch(error => error);
 
     setClick(!click);
   }
 
   return (
     <>
+        {(sessionStorage.getItem("userID") === null) ?(
+          <Redirect to = {"/"}/>
+        ):(
+          <></>
+        )}
+
       <nav className="navbar">
         <div className="nav-container">
           <div className="nav-logo">
-            E-dziennik
+            <NavLink
+                exact
+                to="/teacher"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+                E-dziennik
+            </NavLink>
           </div>
 
           <ul className={click ? "nav-menu active" : "nav-menu"}>
