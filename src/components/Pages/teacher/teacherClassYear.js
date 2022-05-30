@@ -92,28 +92,9 @@ export default class teacherClassYear extends React.Component {
   render() {
     return (
       <><NavBar />
-      <ul>
 
-        <h2>{sessionStorage.getItem("subjectName")}</h2>
-        <br></br>
-
-        {this.state.students.map(student => 
-          <><li key={student.id}><strong>Uczeń: </strong>{student.student.firstName} {student.student.lastName}</li>
-          <ul>
-          {student.mark.map(mark1 => 
-            <li key={mark1.id}><strong>{mark1.type} </strong>{mark1.value} ({mark1.weight})   <u onClick={() => this.setDefaults(student.student.id, mark1.id, "put", mark1.value, mark1.weight, mark1.type, 'Edytuj ocenę ' +  student.student.firstName + ' ' + student.student.lastName)}>EDYTUJ</u>   <u onClick={() => window.confirm('Czy chcesz usunąć ocenę ' + student.student.firstName + ' ' + student.student.lastName + ' za ' + mark1.type + '?') ? this.deleteGrade(mark1.id) : null}>USUŃ</u></li>
-          )}
-          <li><u onClick={() => this.setDefaults(student.student.id, "", "post", "", "", "", 'Dodaj ocenę ' + student.student.firstName + ' ' + student.student.lastName)}>DODAJ OCENE :)</u></li>
-          <br/>
-          </ul></>
-        )}
-
-      </ul>
-
-      <br/>
-      <br/>
-      <br/>
-
+      <h2>{sessionStorage.getItem("subjectName")} Klasa {sessionStorage.getItem("classYearName")}</h2>
+      <br></br>
 
       {(this.state.action !== null) ?(
       <><h2>{this.state.studentName}</h2>
@@ -131,11 +112,26 @@ export default class teacherClassYear extends React.Component {
             <input type="text" onChange={e => this.setState({ gradeType: e.target.value })} value = {this.state.gradeType} required /><br /><br />
           </p>
           <p>
+            <button id="sub_btn" onClick={() => this.setState({ action: null })}>Cofnij</button>
+            <br/>
             <button id="sub_btn" type="submit">Zatwierdź</button>
           </p>
         </form></>
       ):(
-        <></>
+        <ul>
+
+          {this.state.students.map(student => 
+            <><li key={student.id}><strong>Uczeń: </strong>{student.student.firstName} {student.student.lastName}</li>
+            <ul>
+              {student.mark.map(mark1 => 
+                <li key={mark1.id}><strong>{mark1.type} </strong>{mark1.value} ({mark1.weight})<u onClick={() => this.setDefaults(student.student.id, mark1.id, "put", mark1.value, mark1.weight, mark1.type, 'Edytuj ocenę ' +  student.student.firstName + ' ' + student.student.lastName)}>EDYTUJ</u>   <u onClick={() => window.confirm('Czy chcesz usunąć ocenę ' + student.student.firstName + ' ' + student.student.lastName + ' za ' + mark1.type + '?') ? this.deleteGrade(mark1.id) : null}>USUŃ</u></li>
+              )}
+              <li><u onClick={() => this.setDefaults(student.student.id, "", "post", "", "", "", 'Dodaj ocenę ' + student.student.firstName + ' ' + student.student.lastName)}>DODAJ OCENE :)</u></li>
+              <br/>
+            </ul></>
+          )}
+
+        </ul>
       )
       }
       </>

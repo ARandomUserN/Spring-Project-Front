@@ -3,10 +3,11 @@ import axios from 'axios';
 import NavBar from './teacherNavBar'
 import { NavLink } from "react-router-dom";
 
-function subjectToSession(subjectId, classyearId, subjectName) {
+function subjectToSession(subjectId, classyearId, subjectName, classYearName) {
   sessionStorage.setItem("subjectID", subjectId);
   sessionStorage.setItem("classYearID", classyearId);
   sessionStorage.setItem("subjectName", subjectName);    
+  sessionStorage.setItem("classYearName", classYearName); 
 }
 
 export default class teacherSubjects extends React.Component {
@@ -20,6 +21,8 @@ export default class teacherSubjects extends React.Component {
       axios.get('/api/teachers/' + sessionStorage.getItem("userID") + '/subjects')
         .then(res => {
           const subjects = res.data;
+
+          console.log(res.data)
 
           this.setState({ subjects: subjects });
         })
@@ -35,7 +38,7 @@ export default class teacherSubjects extends React.Component {
       <><NavBar />
       <ul>
         {this.state.subjects.map(subject =>
-          <li key={subject.id} className="nav-item"><NavLink exact to="/teacher/class" activeClassName="active" onClick={() => {subjectToSession(subject.subject.id, subject.classyear.id, subject.subject.name)}} className="nav-links"><strong>Klasa: {subject.classyear.year}{subject.classyear.name}</strong> Przedmiot: {subject.subject.name}</NavLink></li>
+          <li key={subject.id} className="nav-item"><NavLink exact to="/teacher/class" activeClassName="active" onClick={() => {subjectToSession(subject.subject.id, subject.classyear.id, subject.subject.name, subject.classyear.year + subject.classyear.name)}} className="nav-links"><strong>Klasa: {subject.classyear.year}{subject.classyear.name}</strong> Przedmiot: {subject.subject.name}</NavLink></li>
         )}
       </ul>     
       </>
