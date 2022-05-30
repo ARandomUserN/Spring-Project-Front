@@ -41,7 +41,6 @@ function LoginForm(){
           }
           if(response.data['href'].split('/')[i] === "teachers"){
             usersClass.getUserDataByID(response.data["href"]).then(userData => {
-              console.log(userData)
               sessionStorage.setItem('userID', userData.teacher.id)
               sessionStorage.setItem('email', userData.email)
               sessionStorage.setItem('name', userData.teacher.firstName)
