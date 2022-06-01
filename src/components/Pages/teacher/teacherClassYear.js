@@ -114,7 +114,7 @@ export default class teacherClassYear extends React.Component {
           <p>
             <button id="sub_btn" type="submit">Zatwierdź</button>
             <br/>
-            <button id="sub_btn" onClick={() => this.setState({ action: null })}>Cofnij</button>
+            <button id="sub_btn" onClick={() => this.setState({ action: null })}>Anuluj</button>
           </p>
         </form></>
       ):(
