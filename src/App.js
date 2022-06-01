@@ -14,6 +14,7 @@ import teacherSubjects from './components/Pages/teacher/teacherSubjects';
 import teacherClassYear from './components/Pages/teacher/teacherClassYear';
 
 import caretaker from './components/Pages/caretaker';
+import { Redirect } from 'react-router-dom';
 
 function App() {
 
@@ -30,6 +31,8 @@ function App() {
       <Route exact path='/teacher/class' component = {teacherClassYear} />
 
       <Route exact path='/caretaker' component = {caretaker} />
+      <Route path='*' exact={true}/>
+      <Redirect from='*' to={sessionStorage.getItem("userType") ? '/' + sessionStorage.getItem("userType") : '/'}/>
     </div>
   );
 }
