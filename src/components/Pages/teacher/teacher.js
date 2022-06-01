@@ -4,10 +4,11 @@ import NavBar from './teacherNavBar'
 function Teacher(){
 
   return (
-    <><NavBar /><div>
+    <><p class="navb"><NavBar /></p><div>
         <>
-        <h1>{sessionStorage.getItem('name')} {sessionStorage.getItem('surname')}</h1>
-        <p>Kontakt: email: {sessionStorage.getItem('email')} telefon: {sessionStorage.getItem('phone')}</p>
+        <p class="color"><h1>{sessionStorage.getItem('name')} {sessionStorage.getItem('surname')}</h1></p>
+        <p>email: {sessionStorage.getItem('email')}</p>
+        <p>telefon: {sessionStorage.getItem('phone')}</p>
         </>
     </div></>
   );

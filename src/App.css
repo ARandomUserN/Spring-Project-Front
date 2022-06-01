@@ -3,11 +3,45 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif
+  /*** font-family: "Roboto", sans-serif***/
 }
 
 /***    Landing Page     ***/
 .main-title,
+
+.pages {
+  color: #4d4d4d;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 10%;
+}
+
+
+
+.App {
+  text-align: center;
+}
+
+.navb {
+  text-align: left;
+}
+
+.grade {
+  border: outset;
+}
+
+.color {
+  color: #8A48A8;
+}
+
+.subject {
+  background-color: #e0e0e0;
+  color: #8A48A8;
+}
+
+.bad2 {
+  background-color: #ac3030;
+}
 
 #reg_btn:hover span {
 padding-right: 25px;
@@ -19,7 +53,7 @@ right: 0;
 }
 
 body {
-  text-align: center;
+  background-color: #ebebeb;
 }
 
 form {

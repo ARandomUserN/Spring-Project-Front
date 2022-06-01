@@ -35,6 +35,7 @@ function LoginForm(){
               sessionStorage.setItem('caretaker', userData.carFirstName + " " + userData.carLastName)
               sessionStorage.setItem('class', userData.year + userData.className)
               sessionStorage.setItem('classYearID', userData.classyearId)
+              sessionStorage.setItem('userType', 'student')
               setRedirect("/student")
             })
 
@@ -46,6 +47,7 @@ function LoginForm(){
               sessionStorage.setItem('name', userData.teacher.firstName)
               sessionStorage.setItem('surname', userData.teacher.lastName)
               sessionStorage.setItem('phone', userData.teacher.phone)
+              sessionStorage.setItem('userType', 'teacher')
               setRedirect("/teacher")
             })
           }
