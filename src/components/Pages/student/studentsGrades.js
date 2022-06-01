@@ -47,7 +47,7 @@ export default class studentsGrades extends React.Component {
 
               <p class="grade" style={{color: grade.value < 1.5 ? "red" : "black"}} ><li key={grade.id}><h2>{grade.value}</h2><b>{grade.type}</b> <p></p><h6>Waga: {grade.weight}</h6> </li></p>
               /*** If na kolory co do wagi ***/
-              
+             
 
             ):(
               <></>
