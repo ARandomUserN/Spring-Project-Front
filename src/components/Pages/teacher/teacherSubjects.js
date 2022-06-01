@@ -38,7 +38,7 @@ export default class teacherSubjects extends React.Component {
       <><p class="navb"><NavBar /></p>
       <ul>
         {this.state.subjects.map(subject =>
-          <p class="color_back"><li key={subject.id} className="nav-item"><NavLink exact to="/teacher/class" activeClassName="active" onClick={() => {subjectToSession(subject.subject.id, subject.classyear.id, subject.subject.name, subject.classyear.year + subject.classyear.name)}} className="nav-links"><strong>Klasa {subject.classyear.year}{subject.classyear.name}</strong> {subject.subject.name}</NavLink></li></p>
+          <p><li key={subject.id} className="nav-item"><NavLink exact to="/teacher/class" activeClassName="active" onClick={() => {subjectToSession(subject.subject.id, subject.classyear.id, subject.subject.name, subject.classyear.year + subject.classyear.name)}} className="nav-links"><strong>Klasa {subject.classyear.year}{subject.classyear.name}</strong> {subject.subject.name}</NavLink></li></p>
         )}
       </ul>     
       </>
