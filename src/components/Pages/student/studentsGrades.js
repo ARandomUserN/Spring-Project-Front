@@ -43,7 +43,7 @@ export default class studentsGrades extends React.Component {
             {this.state.gradesList.map(grade => 
             
             (subject.subject.id === grade.subject) ?(
-              <li key={grade.id}><b>Ocena: </b>{grade.value} <b>Za: </b>{grade.type} <b>Waga: </b>{grade.weight}</li>
+              <li key={grade.id} style={{color: grade.value < 3.0 ? "red" : "black"}} ><b>Ocena: </b>{grade.value} <b>Za: </b>{grade.type} <b>Waga: </b>{grade.weight}</li>
             ):(
               <></>
             )
