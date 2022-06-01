@@ -112,23 +112,24 @@ export default class teacherClassYear extends React.Component {
             <input type="text" onChange={e => this.setState({ gradeType: e.target.value })} value = {this.state.gradeType} required /><br /><br />
           </p>
           <p>
-            <button id="sub_btn" onClick={() => this.setState({ action: null })}>Cofnij</button>
-            <br/>
             <button id="sub_btn" type="submit">Zatwierdź</button>
+            <br/>
+            <button id="sub_btn" onClick={() => this.setState({ action: null })}>Cofnij</button>
           </p>
         </form></>
       ):(
         <ul>
 
-          {this.state.students.map(student => <p class="grade">
+          {this.state.students.map(student => 
             <><li key={student.id}><h3><p class="subject">{student.student.firstName} {student.student.lastName}</p></h3></li>
+            <li><button id="grade_btn" onClick={() => this.setDefaults(student.student.id, "", "post", "", "", "", 'Dodaj ocenę ' + student.student.firstName + ' ' + student.student.lastName)}>Dodaj ocenę</button></li>
             <ul>
               {student.mark.map(mark1 => 
-                <li key={mark1.id}><strong>{mark1.type} </strong>{mark1.value} ({mark1.weight})<u onClick={() => this.setDefaults(student.student.id, mark1.id, "put", mark1.value, mark1.weight, mark1.type, 'Edytuj ocenę ' +  student.student.firstName + ' ' + student.student.lastName)}>EDYTUJ</u>   <u onClick={() => window.confirm('Czy chcesz usunąć ocenę ' + student.student.firstName + ' ' + student.student.lastName + ' za ' + mark1.type + '?') ? this.deleteGrade(mark1.id) : null}>USUŃ</u></li>
+                <p class="grade" style={{color: mark1.value < 1.5 ? "red" : "black"}} ><li key={mark1.id}><h2>{mark1.value}</h2><b>{mark1.type} </b> <h6>Waga: {mark1.weight}</h6><button class="btn" onClick={() => this.setDefaults(student.student.id, mark1.id, "put", mark1.value, mark1.weight, mark1.type, 'Edytuj ocenę ' +  student.student.firstName + ' ' + student.student.lastName)}>Edytuj</button>   <button class="btn" onClick={() => window.confirm('Czy chcesz usunąć ocenę ' + student.student.firstName + ' ' + student.student.lastName + ' za ' + mark1.type + '?') ? this.deleteGrade(mark1.id) : null}>Usuń</button></li></p>
               )}
-              <li><u onClick={() => this.setDefaults(student.student.id, "", "post", "", "", "", 'Dodaj ocenę ' + student.student.firstName + ' ' + student.student.lastName)}>DODAJ OCENE :)</u></li>
+              
               <br/>
-            </ul></></p>
+            </ul></>
           )}
         </ul>
       )
