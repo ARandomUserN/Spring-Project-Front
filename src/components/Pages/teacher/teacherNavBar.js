@@ -26,6 +26,12 @@ function NavBar() {
           <></>
         )}
 
+      {(sessionStorage.getItem("userType") !== 'teacher') ?(
+          <Redirect to = {"/" + sessionStorage.getItem("userType")}/>
+        ):(
+          <></>
+      )}
+
       <nav className="navbar">
         <div className="nav-container">
           <div className="nav-logo">
