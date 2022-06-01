@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css'
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import LoginForm from "./components/Pages/LoginForm";
 
@@ -20,19 +20,23 @@ function App() {
 
   return(
     <div className='App'>
-      <Route exact path='/' component = {LoginForm} />
-      <Route exact path='/student' component = {student} />
-      <Route exact path='/student/grades' component = {studetnsGrades} />
-      <Route exact path='/student/comments' component = {studentsComments} />
-      <Route exact path='/student/presence' component = {studentsPresence} />
+      <Switch>
+        <Route exact path='/' component = {LoginForm} />
+        <Route exact path='/student' component = {student} />
+        <Route exact path='/student/grades' component = {studetnsGrades} />
+        <Route exact path='/student/comments' component = {studentsComments} />
+        <Route exact path='/student/presence' component = {studentsPresence} />
 
-      <Route exact path='/teacher' component = {teacher} /> 
-      <Route exact path='/teacher/subjects' component = {teacherSubjects} />
-      <Route exact path='/teacher/class' component = {teacherClassYear} />
+        <Route exact path='/teacher' component = {teacher} /> 
+        <Route exact path='/teacher/subjects' component = {teacherSubjects} />
+        <Route exact path='/teacher/class' component = {teacherClassYear} />
+        <Route exact path='/teacher/class?' component = {teacherClassYear}/>
 
-      <Route exact path='/caretaker' component = {caretaker} />
-      <Route path='*' exact={true}/>
-      <Redirect from='*' to={sessionStorage.getItem("userType") ? '/' + sessionStorage.getItem("userType") : '/'}/>
+        <Route exact path='/caretaker' component = {caretaker} />
+        
+        <Redirect from='*' to={sessionStorage.getItem("userType") ? '/' + sessionStorage.getItem("userType") : '/'}/>
+      </Switch>
+      
     </div>
   );
 }
