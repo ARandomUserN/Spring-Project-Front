@@ -36,14 +36,16 @@ export default class studentsGrades extends React.Component {
 
   render() {
     return (
-      <><NavBar />
+      <><p class="navb"><NavBar /></p>
       <ul>
+      
         {this.state.subjects.map(subject =>
-          <><li key={subject.id}><b>{subject.subject.name}</b> Nauczyciel: {subject.teacher.firstName} {subject.teacher.lastName}</li><ul>
+          <><p class="subject"><h1><li key={subject.id}><b>{subject.subject.name}</b></li></h1> <h6><p>{subject.teacher.firstName} {subject.teacher.lastName}</p></h6></p> <ul>
             {this.state.gradesList.map(grade => 
             
             (subject.subject.id === grade.subject) ?(
-              <li key={grade.id}><b>Ocena: </b>{grade.value} <b>Za: </b>{grade.type} <b>Waga: </b>{grade.weight}</li>
+              <p class="grade"><li key={grade.id}><h2>{grade.value}</h2><b>{grade.type}</b> <p></p><h6>Waga: {grade.weight}</h6> </li></p>
+              /*** If na kolory co do wagi ***/
             ):(
               <></>
             )
@@ -51,6 +53,7 @@ export default class studentsGrades extends React.Component {
           </ul></>
           
         )}
+        
       </ul>
           
       </>

@@ -3,7 +3,7 @@ import NavBar from "./studentNavBar";
 
 function studentsPresence(){
   return (
-    <><NavBar /><div>
+    <><p class="navb"><NavBar /></p><div>
       <h1>Obecność</h1>
     </div></>
   );

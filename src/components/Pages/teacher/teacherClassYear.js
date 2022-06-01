@@ -91,10 +91,10 @@ export default class teacherClassYear extends React.Component {
 
   render() {
     return (
-      <><NavBar />
+      <><p class="navb"><NavBar /></p>
 
-      <h2>{sessionStorage.getItem("subjectName")} Klasa {sessionStorage.getItem("classYearName")}</h2>
-      <br></br>
+      <p class="subject"><h2>{sessionStorage.getItem("subjectName")} Klasa {sessionStorage.getItem("classYearName")}</h2></p>
+      <br></br><p class="grade"></p>
 
       {(this.state.action !== null) ?(
       <><h2>{this.state.studentName}</h2>
@@ -121,7 +121,7 @@ export default class teacherClassYear extends React.Component {
         <ul>
 
           {this.state.students.map(student => 
-            <><li key={student.id}><strong>Uczeń: </strong>{student.student.firstName} {student.student.lastName}</li>
+            <><li key={student.id}><h3>{student.student.firstName} {student.student.lastName}</h3></li>
             <ul>
               {student.mark.map(mark1 => 
                 <li key={mark1.id}><strong>{mark1.type} </strong>{mark1.value} ({mark1.weight})<u onClick={() => this.setDefaults(student.student.id, mark1.id, "put", mark1.value, mark1.weight, mark1.type, 'Edytuj ocenę ' +  student.student.firstName + ' ' + student.student.lastName)}>EDYTUJ</u>   <u onClick={() => window.confirm('Czy chcesz usunąć ocenę ' + student.student.firstName + ' ' + student.student.lastName + ' za ' + mark1.type + '?') ? this.deleteGrade(mark1.id) : null}>USUŃ</u></li>
@@ -130,7 +130,6 @@ export default class teacherClassYear extends React.Component {
               <br/>
             </ul></>
           )}
-
         </ul>
       )
       }

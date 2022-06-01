@@ -60,7 +60,7 @@ function NavBar() {
                 className="nav-links"
                 onClick={handleClick}
               >
-                Przedmioty
+                Klasy
               </NavLink>
             </li>
             
