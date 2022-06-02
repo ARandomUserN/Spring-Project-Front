@@ -45,7 +45,7 @@ export default class studentsGrades extends React.Component {
             
             (subject.subject.id === grade.subject) ?(<p style={{background: grade.weight > 3.0 ? "#FEF2FF" : "white"}} >
 
-              <p class="grade" style={{color: grade.value < 1.5 ? "red" : "black"}} ><li key={grade.id}><h2>{grade.value}</h2><b>{grade.type}</b> <p></p><h6>Waga: {grade.weight}</h6> </li></p>
+              <p class="grade" style={{color: grade.value < 2.0  ? "red" : "black"}} ><li key={grade.id}><h2>{grade.value}</h2><b>{grade.type}</b> <p></p><h6>Waga: {grade.weight}</h6> </li></p>
 
               </p>
 
