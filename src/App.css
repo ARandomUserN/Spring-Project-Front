@@ -3,11 +3,51 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif
+  /*** font-family: "Roboto", sans-serif***/
 }
 
 /***    Landing Page     ***/
 .main-title,
+
+.pages {
+  color: #4d4d4d;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 10%;
+}
+
+
+
+.App {
+  text-align: center;
+}
+
+.navb {
+  text-align: left;
+}
+
+.grade {
+  border: outset;
+}
+
+.color {
+  color: #8A48A8;
+}
+
+.color_nav {
+  color: #8A48A8;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.color_back {
+  background-color: #808080;
+}
+
+.subject {
+  background-color: #e0e0e0;
+  color: #8A48A8;
+}
 
 #reg_btn:hover span {
 padding-right: 25px;
@@ -19,7 +59,7 @@ right: 0;
 }
 
 body {
-  text-align: center;
+  background-color: #ebebeb;
 }
 
 form {
@@ -46,6 +86,13 @@ input {
   border: none
 }
 
+.btn {
+  background: #c9c9c9;
+  border: none;
+  padding: .2rem;
+  border-radius: 8px;
+}
+
 #sub_btn {
   display: block;
   width: 100%;
@@ -54,6 +101,16 @@ input {
   background: #222;
   color: #fff;
   border-radius: 3px;
+}
+
+#grade_btn {
+  width: 100%;
+  display: block;
+  padding: .5rem;
+  border: none;
+  font-size: 15px;
+  background: #b1b1b1;
+  color: rgb(0, 0, 0);
 }
 
 #sub_btn:hover {
